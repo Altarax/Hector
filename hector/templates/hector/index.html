@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hector Application</title>
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+	<header>
+		<div class="navbar">
+			{% load static %}
+			<img class="logo" src="{% static 'images/hector_logo.png' %}" />
+		<div class="title">
+            <h1>Application de votre appareil autonome</h1>
+		</div>
+		</div>
+	</header>
+    <main>
+		<div class="container">
+			<div class="infos">
+				<div class ="colonne semence" id="first">
+					<div class="header">
+						<span>Choisir votre semence</span>
+					</div>
+					<div class="s1">
+						<form action='carotte_clicked' method="post">
+							{% load static %}
+							{% csrf_token %}
+							<input class="" type="image" id="image" alt="carotte" src="{% static 'images/carotte.png' %}" style="{{ carotte_style }}">
+						</form>
+					</div>
+					<div class="s2">
+						<form action='oignon_clicked' method="post">
+							{% load static %}
+							{% csrf_token %}
+							<input class="" type="image" id="image" alt="oignon" src="{% static 'images/oignon.png' %}" style="{{ oignon_style }}">
+						</form>
+					</div>
+					<div class="s3">
+						<form action='salade_clicked' method="post">
+							{% load static %}
+							{% csrf_token %}
+							<input class="" type="image" id="image" alt="salade" src="{% static 'images/salade.png' %}" style="{{ salade_style }}">
+						</form>
+					</div>
+					<div class="add_semence">
+						{% load static %}
+						<input class="add_button" type="image" id="image" alt="salade" src="{% static 'images/add.png' %}">
+					</div>
+				</div>
+				<div class ="colonne appareil">
+					<div class="header">
+						<span>Informations apppareil</span>
+					</div>
+					<div>
+						<span>Immatriculation : {{ immat }}</span>
+					</div>
+					<div>
+						<span>Mise en circulation : {{ circulation }}</span>
+					</div>
+					<div>
+						<span>Dernière mission : {{ last_mission }}</span>
+					</div>
+					<div>
+						<span>Etat actuel : {{ status }}</span>
+					</div>
+				</div>
+				<div class ="colonne conso">
+					<div class="header">
+						<span>Etat des consommables</span>
+					</div>
+					<div>
+						<span>Réservoir d'eau {{ water }}</span>
+					</div>
+					<div>
+						<span>Réservoir à graines {{ graines }}</span>
+					</div>
+				</div>
+			</div>
+				<div class="action_container">
+					<div class="action reinitialiser">
+						<form action='reset_clicked' method="post">
+							{% load static %}
+							{% csrf_token %}
+							<input type="submit" class="button1" value="Réinitialiser" name="reinitialiser">						</form>
+					</div>
+					<div class="action mission">
+						<form action='start_clicked' method="post">
+							{% load static %}
+							{% csrf_token %}
+							<input type="submit" class="button2" value="Lancer mission" alt="mission">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+    </main>
+
+</body>
+</html>
