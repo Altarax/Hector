@@ -14,7 +14,7 @@ def index(request, border=None):
     oignon_style = ""
     salade_style = ""
     carotte_style = ""
-    button_style = "border: 2px solid black;"
+    button_style = "border: 2px solid black; border-radius: 2px; border-color: green; margin: 4px;"
 
     if border == "oignon":
         oignon_style = button_style
